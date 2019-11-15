@@ -78,6 +78,7 @@ class Contact_info extends React.Component {
 }
 
 class Super_description extends React.Component {
+  
   render(){
     return(
       <article className="super-button-box">
@@ -85,7 +86,12 @@ class Super_description extends React.Component {
             Haec et huius modi quaedam innumerabilia ultrix facinorum impiorum bonorumque praemiatrix aliquotiens operatur Adrastia atque utinam semper quam vocabulo duplici etiam Nemesim appellamus: ius quoddam sublime numinis efficacis, humanarum mentium opinione lunari circulo superpositum, vel ut definiunt alii, substantialis tutela generali potentia partilibus praesidens fatis, quam theologi veteres .
           </p>
           
-          <a href="#" className="button-box-super"> C'est super ! 👍 </a>
+          <a href="#"
+             className="button-box-super"
+        
+          >
+                  C'est super ! 👍 {this.props.like} 
+          </a>
 
       </article>
     );
@@ -101,19 +107,22 @@ class App extends React.Component {
           nom: "La Riviere" ,
           prenom: "Mathilde" ,
           date_naissance: "30/11/1998", 
-          photo: riviere 
+          photo: riviere,
+          love: 0,
         },
         {
           nom: "La Colinne",
           prenom: "Claude",
           date_naissance: "24/11/1998",
-          photo: caillou
+          photo: caillou,
+          love: 0, 
         },
         {
           nom: "La Montagne",
           prenom: "Jeanne",
           date_naissance: "03/11/1998",
-          photo: shan
+          photo: shan,
+          love: 0,
         }
       ],
       current:
@@ -121,16 +130,39 @@ class App extends React.Component {
           nom: 'none',
           prenom: 'none',
           date_naissance: 'none', 
-          photo: contact
+          photo: contact,
+          love: 0,
         }
     };
   }
 
+/*
+  handleClick(i) {
+    
+    const buff = this.state.profils.slice(); 
+    for(let i=0; i< this.state.profils.length -1; i++ )
+    {
+      if( this.state.current.prenom === this.state.profils[i].prenom)
+      {
+        buff[i].love = i; 
+        this.setState({profils: buff}); 
+      }
+    }
+  }
+
+  likeSend(i){
+    return <Super_description 
+            value={i}
+            onClick={() => this.handleClick(i)} /> 
+
+    }
+*/
   refresh (current) {
     this.setState({
       current: current,
     });
   }
+
 
   
   render(){
